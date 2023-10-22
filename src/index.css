@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange-color: #ff8e00;
+  --pink-color: #e8afc2;
+}
+
+/*
+body > #root > div {
+  height: 100%;
+}
+
+.bg-ice-cream {
+  background-image: url("./assets/icecreamLogin.jpg");
+  /* Full height */
+/* height: 100%; */
+
+/* Center and scale the image nicely */
+/* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+/* .user {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.user:hover {
+  color: var(--orange-color);
+}
+
+.cart {
+  font-size: 3rem;
+  color: var(--orange-color);
+  cursor: pointer;
+}
+
+.cart:hover {
+  filter: drop-shadow(3px 3px 0 white) drop-shadow(-1px -1px 0 white);
+}
+
+.log-out-btn {
+  padding: 1rem;
+  border-radius: 30px;
+  background-color: var(--orange-color);
+  color: white;
+  font-weight: 800;
+}
+
+.log-out-btn:hover {
+  border: dashed 3px white;
+} */
