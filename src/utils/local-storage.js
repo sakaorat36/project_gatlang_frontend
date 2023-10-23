@@ -13,3 +13,4 @@ export const removeAccessToken = () => localStorage.removeItem(ACCESS_TOKEN); //
 /* ROLE */
 export const addRole = (role) => localStorage.setItem(ROLE, role);
 export const getRole = () => localStorage.getItem(ROLE);
+export const removeRole = () => localStorage.removeItem(ROLE);

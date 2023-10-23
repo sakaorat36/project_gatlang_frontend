@@ -4,6 +4,7 @@ import {
   addAccessToken,
   getAccessToken,
   removeAccessToken,
+  removeRole,
 } from "../utils/local-storage";
 
 export const AuthContext = createContext();
@@ -33,6 +34,7 @@ export default function AuthContextProvider({ children }) {
 
   const logout = () => {
     removeAccessToken();
+    removeRole();
     setAuthUser(null);
   };
 

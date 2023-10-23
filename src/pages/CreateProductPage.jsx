@@ -11,7 +11,7 @@ export default function CreateProductPage() {
     price: "",
   });
   const [image, setImage] = useState(null);
-  const [isLoading, setLoading] = useState(false);
+  // const [isLoading, setLoading] = useState(false);
 
   const { createProduct } = useProduct();
 
@@ -35,7 +35,7 @@ export default function CreateProductPage() {
     formData.append("amount", input.amount);
     formData.append("price", input.price);
 
-    setLoading(true);
+    // setLoading(true);
 
     createProduct(formData)
       .then(() => {
@@ -43,14 +43,14 @@ export default function CreateProductPage() {
       })
       .catch((err) => {
         alert(err.response.data.message);
-        setLoading(false);
+        // setLoading(false);
       });
   };
 
   return (
     <div>
       <div className="flex flex-row bg-pink-200 min-h-screen">
-        {!isLoading ? <div>Not Loading</div> : <div>Loading ...</div>}
+        {/* {!isLoading ? <div>Not Loading</div> : <div>Loading ...</div>} */}
         <div className="basis-1/2 pt-10 flex flex-col items-center min-[900px]:pt-[10.25rem] min-[900px]:flex-row min-[900px]:justify-between min-[900px]:items-start min-[1075px]:justify-center">
           <div className="mx-auto max-w-[24.75rem] bg-white rounded-lg shadow-[0_0_15px_rgb(0_0_0_/0.2)] mb-6 p-4">
             <form onSubmit={handleSubmit}>
@@ -102,8 +102,14 @@ export default function CreateProductPage() {
             </form>
           </div>
         </div>
-        <div className="basis-1/2">
-          {image ? <img src={URL.createObjectURL(image)} alt="product" /> : ""}
+        <div className="basis-1/2 pt-32">
+          {image ? (
+            <div className="p-8">
+              <img src={URL.createObjectURL(image)} alt="product" width={400} />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

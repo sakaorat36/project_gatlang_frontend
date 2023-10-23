@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Authenticated>
-        <Layout />,
+        <Layout />
       </Authenticated>
     ),
     children: [
@@ -53,12 +53,11 @@ const router = createBrowserRouter([
       {
         path: "product/create",
         element:
-          getRole() === "ADMIN" ? <CreateProductPage /> : <NotAuthorized />,
+          getRole() === ADMIN ? <CreateProductPage /> : <NotAuthorized />,
       },
       {
         path: "product/edit",
-        element:
-          getRole() === "ADMIN" ? <EditProductPage /> : <NotAuthorized />,
+        element: getRole() === ADMIN ? <EditProductPage /> : <NotAuthorized />,
       },
       { path: "*", element: <NotFound /> },
     ],

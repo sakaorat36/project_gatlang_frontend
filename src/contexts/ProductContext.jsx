@@ -1,19 +1,30 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import axios from "../config/axios";
 
 export const ProductContext = createContext();
 
 export default function ProductContextProvider({ children }) {
   const [productList, setProductList] = useState([]);
+  const [createProductList, setCreateProductList] = useState([]);
   const [success, setSuccess] = useState(false);
-
-  useEffect(() => {}, []);
 
   const getProduct = async () => {
     const res = await axios.get("/product");
 
     if (res.data?.products) {
       setProductList(res.data.products);
+    }
+  };
+
+  const getCreateProduct = async () => {
+    const res = await axios.get("/product");
+
+    if (res.data?.products) {
+      let newProductList = res.data?.products;
+      newProductList.map((item) => {
+        return (item.amount = 0);
+      });
+      setCreateProductList(res.data.products);
     }
   };
 
@@ -47,7 +58,11 @@ export default function ProductContextProvider({ children }) {
         updateProduct,
         deleteProduct,
         updateStatusProductById,
+        setProductList,
         productList,
+        getCreateProduct,
+        setCreateProductList,
+        createProductList,
         success,
       }}
     >

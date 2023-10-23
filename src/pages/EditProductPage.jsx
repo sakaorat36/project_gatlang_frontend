@@ -21,29 +21,26 @@ export default function EditProductPage() {
               <tr className="text-center">
                 <th className="px-6 py-3">ID</th>
                 <th>Name</th>
-                <th>Amount</th>
-                <th>Price</th>
+                <th className="text-right">Amount</th>
+                <th className="text-right">Price</th>
                 <th>Product Status</th>
                 <th></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {productList.length > 0
-                ? productList.map((product) => {
-                    const { id, name, amount, price, productStatus } = product;
-                    return (
-                      <RowEditProduct
-                        key={id}
-                        id={id}
-                        name={name}
-                        amount={amount}
-                        price={price}
-                        productStatus={productStatus}
-                      />
-                    );
-                  })
-                : ""}
+              {productList.map((product) => {
+                return (
+                  <RowEditProduct
+                    key={product.id}
+                    id={product.id}
+                    name={product.name}
+                    amount={product.amount}
+                    price={product.price}
+                    productStatus={product.productStatus}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>

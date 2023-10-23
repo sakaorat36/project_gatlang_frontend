@@ -1,17 +1,16 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import axios from "../config/axios";
 
 export const OrderContext = createContext();
 
 export default function OrderContextProvider({ children }) {
-  const [order, setOrder] = useState([]);
+  const [orderList, setOrderList] = useState([]);
+  const [createOrderList, setCreateOrderList] = useState([]);
   const [success, setSuccess] = useState(null);
-
-  useEffect(() => {}, []);
 
   const getOrder = async () => {
     const res = await axios.get("/order");
-    setOrder(res.data);
+    setOrderList(res.data.orders);
   };
 
   const createOrder = async (input) => {
@@ -19,14 +18,23 @@ export default function OrderContextProvider({ children }) {
     setSuccess(res.data.createOrder);
   };
 
-  const updateOrderStatus = async (input) => {
-    const res = await axios.patch("/product/update", input);
+  const updateOrderStatusById = async (id, status) => {
+    const res = await axios.patch(`/order/update/order-status/${id}`, {
+      orderStatus: status,
+    });
+    setSuccess(res.data);
+  };
+
+  const updatePaymentStatusById = async (id, status) => {
+    const res = await axios.patch(`/payment/update/payment-status/${id}`, {
+      paymentStatus: status,
+    });
     setSuccess(res.data);
   };
 
   const getOrderByUserId = async (input) => {
-    const res = await axios.get(`/order/${input?.id}`);
-    setSuccess(res.data);
+    const res = await axios.get(`/order/${input}`);
+    setOrderList(res.data.order);
   };
 
   return (
@@ -34,9 +42,13 @@ export default function OrderContextProvider({ children }) {
       value={{
         getOrder,
         createOrder,
-        updateOrderStatus,
+        updateOrderStatusById,
+        updatePaymentStatusById,
         getOrderByUserId,
-        order,
+        setOrderList,
+        orderList,
+        setCreateOrderList,
+        createOrderList,
         success,
       }}
     >

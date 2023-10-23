@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import useProduct from "../hooks/use-product";
-import { useRef } from "react";
+import { PencilIcon, SaveIcon, CloseIcon } from "../icons/index";
 
 export default function RowEditProduct({
   id,
@@ -13,7 +13,7 @@ export default function RowEditProduct({
     useProduct();
   const refSelect = useRef(null);
   const [isEditMode, setIsEditMode] = useState(false);
-  console.log(refSelect.current);
+
   const handleOnClick = () => {
     setIsEditMode(true);
   };
@@ -52,8 +52,9 @@ export default function RowEditProduct({
       refSelect?.current?.blur();
       await updateStatusProductById(id, status);
       await getProduct();
+      setIsEditMode(false);
 
-      alert(`Update product status success`);
+      alert(`Already update product ${name}`);
     } catch (error) {
       console.log(error);
     }
@@ -103,32 +104,54 @@ export default function RowEditProduct({
               <span className="text-red-600">{productStatus}</span>
             )}
           </label>
-          <ul
-            ref={refSelect}
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li
-              onClick={() => {
-                handleChangeProductStatus("AVAILABLE");
-              }}
+          {isEditMode ? (
+            <ul
+              ref={refSelect}
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <a className="text-green-500">AVAILABLE</a>
-            </li>
-            <li
-              onClick={() => {
-                handleChangeProductStatus("NOTAVAILABLE");
-              }}
-            >
-              <a className="text-red-600">NOT AVAILABLE</a>
-            </li>
-          </ul>
+              <li
+                onClick={() => {
+                  handleChangeProductStatus("AVAILABLE");
+                }}
+              >
+                <a className="text-green-500">AVAILABLE</a>
+              </li>
+              <li
+                onClick={() => {
+                  handleChangeProductStatus("NOTAVAILABLE");
+                }}
+              >
+                <a className="text-red-600">NOT AVAILABLE</a>
+              </li>
+            </ul>
+          ) : (
+            ""
+          )}
         </div>
       </td>
-      <td onClick={isEditMode ? updateEditRow : handleOnClick}>
-        {isEditMode ? "DONE" : "EDIT"}
+      <td
+        onClick={isEditMode ? updateEditRow : handleOnClick}
+        className="cursor-pointer"
+      >
+        {isEditMode ? (
+          <span>
+            <SaveIcon />
+            &nbsp; DONE
+          </span>
+        ) : (
+          <span>
+            <PencilIcon />
+            &nbsp; EDIT
+          </span>
+        )}
       </td>
-      <td onClick={deleteProductRow}>Delete</td>
+      <td onClick={deleteProductRow} className="cursor-pointer">
+        <span>
+          <CloseIcon />
+          &nbsp; DELETE
+        </span>
+      </td>
     </tr>
   );
 }

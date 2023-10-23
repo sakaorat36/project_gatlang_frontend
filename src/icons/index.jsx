@@ -13,3 +13,27 @@ export function IcecreamIcon() {
     </>
   );
 }
+
+export function PencilIcon() {
+  return (
+    <>
+      <i className="fa fa-pencil"></i>
+    </>
+  );
+}
+
+export function SaveIcon() {
+  return (
+    <>
+      <i className="fa fa-save"></i>
+    </>
+  );
+}
+
+export function CartIcon() {
+  return (
+    <>
+      <i className="fa fa-shopping-cart"></i>
+    </>
+  );
+}
