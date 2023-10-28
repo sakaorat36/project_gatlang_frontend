@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function Loading({ message }) {
   return (
     <div className="flex flex-col items-center">
       <span>
@@ -20,7 +20,7 @@ export default function Loading() {
         </svg>
       </span>
       <div className="p-7 text-2xl font-semibold">
-        <h1>Registering ...</h1>
+        <h1>{message}</h1>
       </div>
     </div>
   );

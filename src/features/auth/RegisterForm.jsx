@@ -16,6 +16,8 @@ export default function RegisterForm() {
   const [isLoading, setLoading] = useState(false);
   const { register } = useAuth();
 
+  const loadingMessage = "REGISTERING ...";
+
   const navigate = useNavigate();
 
   const handleChangeInput = (e) => {
@@ -123,7 +125,7 @@ export default function RegisterForm() {
         <div className="basis-1/2">
           <div className="h-screen bg-white">
             <div className="flex justify-center items-center h-full">
-              <Loading />
+              <Loading message={loadingMessage} />
             </div>
           </div>
         </div>
