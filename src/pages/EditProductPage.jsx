@@ -10,7 +10,7 @@ export default function EditProductPage() {
     getProduct().catch((err) => {
       alert(err.response.data.message);
     });
-  }, []);
+  }, [productList]);
 
   return (
     <div className="bg-pink-200 min-h-screen">
