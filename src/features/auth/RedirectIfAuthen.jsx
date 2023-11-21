@@ -13,7 +13,7 @@ export default function RedirectIfAuthen({ children }) {
     }
 
     if (authUser?.role === "ADMIN") {
-      return <Navigate to="/product/edit" />;
+      return <Navigate to="/order/edit" />;
     }
   }
 

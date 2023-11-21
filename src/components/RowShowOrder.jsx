@@ -56,7 +56,7 @@ export default function RowShowOrder({
       <td className="text-center">
         {paymentStatus ? (
           <div className="dropdown">
-            <label tabIndex={0} className="btn m-1">
+            <label tabIndex={0} className="btn m-1 bg-transparent">
               {paymentStatus === "PAID" ? (
                 <span className="text-green-500">{paymentStatus}</span>
               ) : (
@@ -96,7 +96,7 @@ export default function RowShowOrder({
       <td className="text-center">
         {orderStatus ? (
           <div className="dropdown">
-            <label tabIndex={0} className="btn m-1">
+            <label tabIndex={0} className="btn m-1 bg-transparent">
               {orderStatus === "COMPLETE" ? (
                 <span className="text-green-500">{orderStatus}</span>
               ) : (

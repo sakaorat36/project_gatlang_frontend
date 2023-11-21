@@ -43,6 +43,7 @@ export default function RowEditProduct({
       await getProduct();
       alert(`Already delete product ${name}`);
     } catch (error) {
+      alert(`Delete product ${name} failed`);
       console.log(error);
     }
   };
@@ -97,7 +98,7 @@ export default function RowEditProduct({
       </td>
       <td className="text-center">
         <div className="dropdown">
-          <label tabIndex={0} className="btn m-1">
+          <label tabIndex={0} className="btn m-1 bg-transparent">
             {productStatus === "AVAILABLE" ? (
               <span className="text-green-500">{productStatus}</span>
             ) : (

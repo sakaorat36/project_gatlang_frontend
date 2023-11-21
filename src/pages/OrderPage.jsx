@@ -69,7 +69,7 @@ export default function OrderPage() {
       </div>
       <div className="flex justify-center m-4 y-2">
         <button
-          className="btn btn-warning btn-wide text-2xl hover:bg-yellow-200 font-semibold"
+          className="btn btn-warning btn-wide text-2xl hover:text-white bg-orange-400 hover:bg-orange-400 hover:bg-opacity-50 font-semibold"
           onClick={() => navigate("/product")}
         >
           Back
