@@ -42,9 +42,13 @@ const router = createBrowserRouter([
         path: "order",
         element: <OrderPage />,
       },
+      // {
+      //   path: "order/edit",
+      //   element: getRole() === ADMIN ? <EditOrderPage /> : <NotAuthorized />,
+      // },
       {
         path: "order/edit",
-        element: getRole() === ADMIN ? <EditOrderPage /> : <NotAuthorized />,
+        element: <EditOrderPage />,
       },
       {
         path: "product",
